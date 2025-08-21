@@ -1,0 +1,76 @@
+---
+import Layout from "../layouts/Layout.astro";
+import siteConfig from "../config/site.json";
+
+import ListProjects from "../components/listProjects.astro";
+const { company, contact, experience } = siteConfig;
+
+import { Image } from "astro:assets";
+import { ArrowUpRightIcon } from "@lucide/astro";
+---
+
+<Layout title="Eduardo Calvo | UI Designer & Frontend Developer">
+  <Fragment slot="left-content">
+    <div class="flex w-full flex-col gap-6">
+      <Image
+        src={company.logo}
+        alt={company.name}
+        width="32"
+        height="32"
+        class="rounded-full"
+      />
+
+      <div class="flex flex-col gap-3">
+        <h1 class="text-balance font-semibold text-2xl">
+          {company.description}
+        </h1>
+        <p class="text-sm">{company.longDescription}</p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href={contact.bookCall.url}>
+          <button
+            class="inline-flex h-8 w-auto items-center justify-center whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow-sm hover:bg-black/90"
+          >
+            {contact.bookCall.text}
+          </button>
+        </a>
+        <a href={contact.chat.url} target="_blank">
+          <button
+            class="inline-flex h-8 w-auto items-center justify-center whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-gray-100 text-gray-900 hover:bg-gray-200 pl-2 gap-2"
+          >
+            {contact.chat.text}
+          </button>
+        </a>
+      </div>
+      <div class="flex flex-col gap-4">
+        {
+          experience.map((exp) => (
+            <div class="group flex items-center justify-between py-4 px-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
+              <div class="flex items-center gap-4">
+                <span class="text-xs text-gray-500 font-medium p-0.5 bg-white">
+                  {exp.year}
+                </span>
+                <div class="flex flex-col">
+                  <h3 class="font-semibold text-sm text-gray-900 group flex gap-2 flex-row items-center">
+                    {exp.company}
+                    <ArrowUpRightIcon class="w-4 h-4 group-hover:flex hidden transition-transform" />
+                  </h3>
+                  <p class="text-xs text-gray-500  tracking-wide">{exp.type}</p>
+                </div>
+              </div>
+              <div class="text-right opacity-0 group-hover:opacity-100 transition-opacity">
+                <span class="text-lg font-bold text-gray-900">
+                  {exp.company}
+                </span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Fragment>
+  <Fragment slot="right-content">
+    <ListProjects />
+  </Fragment>
+</Layout>

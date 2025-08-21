@@ -1,0 +1,68 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+import siteConfig from "../config/site.json";
+import Fade from "../components/fade.astro";
+import FloatNav from "../components/floatNav.astro";
+
+const { company } = siteConfig;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="UI Designer & Frontend Developer based in Madrid"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body
+    class="flex min-h-screen w-full flex-col font-medium font-sans leading-snug tracking-tight antialiased"
+  >
+    <Fade
+      side="top"
+      background="white"
+      className="!sticky !h-[120px] z-2"
+      stop="25%"
+      blur="4px"
+    />
+    <FloatNav />
+    <!-- Left static section -->
+    <main
+      class="flex lg:flex-row flex-col lg:justify-between gap-16 -my-[120px]"
+    >
+      <div
+        class="flex flex-col gap-8 lg:justify-between py-8 px-4 w-full max-w-xs shrink-0 h-screen lg:sticky lg:top-0 z-10"
+      >
+        <slot name="left-content" />
+        <div class="w-full flex flex-col gap-3">
+          <p class="text-xs text-gray-500">{company.footerText}</p>
+          <p class="text-xs text-gray-500">{company.copyright}</p>
+        </div>
+      </div>
+      <!-- Right scrollable section -->
+      <div class="flex flex-col gap-2 p-2 w-full max-w-7xl relative">
+        <slot name="right-content" />
+      </div>
+    </main>
+    <Fade
+      background="white"
+      side="bottom"
+      className="!sticky !h-[120px] z-2"
+      stop="25%"
+      blur="4px"
+    />
+  </body>
+</html>

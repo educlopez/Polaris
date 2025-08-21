@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import siteConfig from "../config/site.json";
+
+const projects = await getCollection("projects");
+type Project = CollectionEntry<"projects">;
+
+const { projects: projectsConfig } = siteConfig;
+const gridCols = projectsConfig.gridColumns || 1;
+const gridClass =
+  gridCols === 2
+    ? "grid grid-cols-1 lg:grid-cols-2 gap-2"
+    : "flex flex-col gap-2";
+---
+
+<div class={gridClass}>
+  {
+    projects.map((project: Project) => (
+      <a
+        href={`/projects/${project.id}`}
+        class="relative rounded-lg lg:rounded-2xl overflow-hidden hover:opacity-95 transition-opacity aspect-[16/10]"
+      >
+        <Image
+          alt={project.data.coverAlt}
+          loading="lazy"
+          width="3552"
+          height="2304"
+          decoding="async"
+          src={project.data.cover}
+          class="w-full h-full object-cover"
+          transition:name={`project-${project.id}`}
+        />
+        <div class="absolute bottom-4 left-4 items-center gap-1.5 hidden lg:flex text-foreground">
+          <div class="shrink-0">
+            <Image
+              src={project.data.logo.image}
+              width="32"
+              height="32"
+              alt={`${project.data.name} logo`}
+              class="w-6 h-6 rounded-full object-cover"
+              onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"
+            />
+            <div
+              class={`w-6 h-6 ${project.data.logo.fallback.bgColor} rounded-full hidden items-center justify-center text-white text-xs`}
+            >
+              {project.data.logo.fallback.text}
+            </div>
+          </div>
+          <div class="text-xs text-white">{project.data.name}</div>
+        </div>
+      </a>
+    ))
+  }
+</div>

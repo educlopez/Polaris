@@ -1,0 +1,55 @@
+{
+  "company": {
+    "name": "Eduardo Calvo",
+    "logo": "https://github.com/educlopez.png",
+    "description": "UI Designer & Frontend Developer",
+    "longDescription": "I help businesses create beautiful, functional, and user-friendly digital experiences through thoughtful UI design and modern frontend development.",
+    "footerText": "Based in Madrid, Spain. Working with clients worldwide to bring their digital visions to life.",
+    "copyright": "© Eduardo Calvo"
+  },
+  "contact": {
+    "bookCall": {
+      "text": "Book an intro call",
+      "url": "#"
+    },
+    "chat": {
+      "text": "Chat",
+      "url": "#"
+    }
+  },
+  "experience": [
+    {
+      "year": "2021 — Presente",
+      "company": "Cinetic Digital",
+      "type": "DISEÑADOR WEB Y FRONTEND",
+      "logo": "cineticdigital"
+    },
+    {
+      "year": "2018 — 2021",
+      "company": "Ádraba",
+      "type": "DISEÑADOR GRÁFICO Y DESARROLLADOR WEB",
+      "logo": "adraba"
+    },
+    {
+      "year": "2015 — 2019",
+      "company": "Tantra",
+      "type": "DISEÑADOR GRÁFICO Y MAQUETADOR WEB",
+      "logo": "tantra"
+    },
+    {
+      "year": "2016 — 2017",
+      "company": "BDO",
+      "type": "DISEÑADOR GRÁFICO Y MAQUETADOR WEB",
+      "logo": "bdo"
+    },
+    {
+      "year": "2014",
+      "company": "Papaya Group",
+      "type": "DISEÑADOR GRÁFICO",
+      "logo": "papayagroup"
+    }
+  ],
+  "projects": {
+    "gridColumns": 2
+  }
+}

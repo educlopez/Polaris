@@ -1,0 +1,106 @@
+---
+interface Props {
+  stop?: string;
+  blur?: string;
+  height?: string;
+  side?: "top" | "bottom" | "left" | "right";
+  className?: string;
+  background: string;
+  debug?: boolean;
+  style?: Record<string, any>;
+}
+
+const {
+  stop = "25%",
+  blur = "4px",
+  height = "48px",
+  side = "top",
+  className = "",
+  background,
+  debug = false,
+  style = {},
+  ...rest
+} = Astro.props;
+
+// CSS styles for the fade effect
+const fadeStyles = {
+  "--stop": stop,
+  "--blur": blur,
+  "--height": height,
+  "--background": background,
+  ...(debug && {
+    outline: "2px solid var(--color-amber-500)",
+  }),
+  ...style,
+};
+---
+
+<div
+  aria-hidden="true"
+  class={`fade-root ${className}`}
+  data-side={side}
+  style={fadeStyles}
+  {...rest}
+>
+</div>
+
+<style>
+  .fade-root {
+    --blur: 4px;
+    --stop: 25%;
+    --height: 48px;
+    position: fixed;
+    pointer-events: none;
+    width: 100%;
+    height: var(--height);
+    user-select: none;
+    -webkit-user-select: none;
+    left: 0;
+    backdrop-filter: blur(var(--blur));
+
+    &[data-side="top"] {
+      top: 0;
+      background: linear-gradient(0deg, transparent, transparent);
+      mask-image: linear-gradient(
+        to bottom,
+        var(--background) var(--stop),
+        transparent
+      );
+    }
+
+    &[data-side="left"] {
+      height: 100%;
+      width: var(--height);
+      left: 0;
+      background: linear-gradient(to left, transparent, var(--background));
+      mask-image: linear-gradient(
+        to right,
+        var(--background) var(--stop),
+        transparent
+      );
+    }
+
+    &[data-side="right"] {
+      height: 100%;
+      width: var(--height);
+      right: 0;
+      left: unset;
+      background: linear-gradient(to right, transparent, var(--background));
+      mask-image: linear-gradient(
+        to left,
+        var(--color-primary) var(--stop),
+        transparent
+      );
+    }
+
+    &[data-side="bottom"] {
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent, var(--background));
+      mask-image: linear-gradient(
+        to top,
+        var(--color-primary) var(--stop),
+        transparent
+      );
+    }
+  }
+</style>
