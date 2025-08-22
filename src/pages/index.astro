@@ -7,18 +7,35 @@ const { company, contact, experience } = siteConfig;
 
 import { Image } from "astro:assets";
 import { ArrowUpRightIcon } from "@lucide/astro";
+import { Button } from "@/components/ui/button";
 ---
 
 <Layout title="Eduardo Calvo | UI Designer & Frontend Developer">
   <Fragment slot="left-content">
     <div class="flex w-full flex-col gap-6">
-      <Image
-        src={company.logo}
-        alt={company.name}
-        width="32"
-        height="32"
-        class="rounded-full"
-      />
+      <div class="flex items-center gap-3">
+        <Image
+          src={company.logo}
+          alt={company.name}
+          width="32"
+          height="32"
+          class="rounded-full"
+        />
+        <div class="flex items-center gap-2">
+          <span class="relative flex size-2">
+            <span
+              class={`absolute inline-flex h-full w-full animate-ping rounded-full  opacity-75 ${company.status.available ? "bg-emerald-400" : "bg-red-400"}`}
+            ></span>
+            <span
+              class={`relative inline-flex size-2 rounded-full ${company.status.available ? "bg-emerald-500" : "bg-red-500"}`}
+            ></span>
+          </span>
+
+          <span class="text-xs font-medium text-gray-600">
+            {company.status.text}
+          </span>
+        </div>
+      </div>
 
       <div class="flex flex-col gap-3">
         <h1 class="text-balance font-semibold text-2xl">
@@ -29,40 +46,36 @@ import { ArrowUpRightIcon } from "@lucide/astro";
 
       <div class="flex items-center gap-3">
         <a href={contact.bookCall.url}>
-          <button
-            class="inline-flex h-8 w-auto items-center justify-center whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow-sm hover:bg-black/90"
-          >
+          <Button>
             {contact.bookCall.text}
-          </button>
+          </Button>
         </a>
         <a href={contact.chat.url} target="_blank">
-          <button
-            class="inline-flex h-8 w-auto items-center justify-center whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-gray-100 text-gray-900 hover:bg-gray-200 pl-2 gap-2"
-          >
+          <Button variant="outline">
             {contact.chat.text}
-          </button>
+          </Button>
         </a>
       </div>
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 w-full">
         {
           experience.map((exp) => (
-            <div class="group flex items-center justify-between py-4 px-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
+            <div class="group border border-transparent flex items-center justify-between py-4 px-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover:border-border">
               <div class="flex items-center gap-4">
-                <span class="text-xs text-gray-500 font-medium p-0.5 bg-white">
-                  {exp.year}
-                </span>
                 <div class="flex flex-col">
                   <h3 class="font-semibold text-sm text-gray-900 group flex gap-2 flex-row items-center">
                     {exp.company}
                     <ArrowUpRightIcon class="w-4 h-4 group-hover:flex hidden transition-transform" />
                   </h3>
+                  <span class="text-xs text-gray-500 font-medium p-0.5 ">
+                    {exp.year}
+                  </span>
                   <p class="text-xs text-gray-500  tracking-wide">{exp.type}</p>
                 </div>
               </div>
               <div class="text-right opacity-0 group-hover:opacity-100 transition-opacity">
-                <span class="text-lg font-bold text-gray-900">
-                  {exp.company}
-                </span>
+                <div class="w-10 h-10 flex items-center justify-center">
+                  <img src={exp.logo} alt={exp.company} class="w-8" />
+                </div>
               </div>
             </div>
           ))

@@ -2,54 +2,84 @@
   "company": {
     "name": "Eduardo Calvo",
     "logo": "https://github.com/educlopez.png",
-    "description": "UI Designer & Frontend Developer",
-    "longDescription": "I help businesses create beautiful, functional, and user-friendly digital experiences through thoughtful UI design and modern frontend development.",
-    "footerText": "Based in Madrid, Spain. Working with clients worldwide to bring their digital visions to life.",
-    "copyright": "© Eduardo Calvo"
+    "description": "Edu Calvo | UI Designer & Frontend Developer",
+    "longDescription": "Passionate UI designer and frontend developer with 8+ years of experience crafting digital experiences that blend aesthetics with functionality. I specialize in creating intuitive interfaces, responsive designs, and modern web applications that drive user engagement and business growth.",
+    "detailedDescription": "I transform complex ideas into elegant, user-centered digital solutions. My approach combines strategic design thinking with technical expertise, ensuring every project delivers both visual impact and seamless functionality. From concept to deployment, I work closely with clients to understand their goals and create solutions that exceed expectations.",
+    "footerText": "Based in Madrid, Spain. Collaborating with innovative companies worldwide to build exceptional digital experiences.",
+    "copyright": "© 2025 Eduardo Calvo. All rights reserved.",
+    "status": {
+      "available": true,
+      "text": "Available for new projects"
+    },
+    "specialties": [
+      "UI/UX Design",
+      "Frontend Development",
+      "Responsive Design",
+      "Design Systems",
+      "Web Applications",
+      "User Experience"
+    ],
+    "technologies": [
+      "React",
+      "Vue.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Figma",
+      "Adobe Creative Suite"
+    ]
   },
   "contact": {
     "bookCall": {
-      "text": "Book an intro call",
+      "text": "Book a call",
       "url": "#"
     },
     "chat": {
       "text": "Chat",
       "url": "#"
-    }
+    },
+    "email": "hello@eduardocalvolopez.com",
+    "linkedin": "https://linkedin.com/in/educlopez",
+    "github": "https://github.com/educlopez",
+    "dribbble": "https://dribbble.com/educlopez"
   },
   "experience": [
     {
-      "year": "2021 — Presente",
-      "company": "Cinetic Digital",
-      "type": "DISEÑADOR WEB Y FRONTEND",
-      "logo": "cineticdigital"
+      "year": "2022 — Present",
+      "company": "Vercel",
+      "type": "SENIOR UI DESIGNER & FRONTEND DEVELOPER",
+      "logo": "https://cdn.simpleicons.org/vercel",
+      "description": "Leading design and development initiatives for digital products, creating scalable design systems and implementing modern frontend architectures."
     },
     {
-      "year": "2018 — 2021",
-      "company": "Ádraba",
-      "type": "DISEÑADOR GRÁFICO Y DESARROLLADOR WEB",
-      "logo": "adraba"
+      "year": "2020 — 2022",
+      "company": "Cloudflare",
+      "type": "UI/UX DESIGNER & WEB DEVELOPER",
+      "logo": "https://cdn.simpleicons.org/cloudflare",
+      "description": "Designed and developed user-centered digital solutions, focusing on brand identity and user experience optimization."
     },
     {
-      "year": "2015 — 2019",
-      "company": "Tantra",
-      "type": "DISEÑADOR GRÁFICO Y MAQUETADOR WEB",
-      "logo": "tantra"
+      "year": "2018 — 2020",
+      "company": "Stripe",
+      "type": "GRAPHIC DESIGNER & WEB DEVELOPER",
+      "logo": "https://cdn.simpleicons.org/stripe",
+      "description": "Created visual identities and web solutions for diverse clients, building expertise in both design and development workflows."
     },
     {
-      "year": "2016 — 2017",
-      "company": "BDO",
-      "type": "DISEÑADOR GRÁFICO Y MAQUETADOR WEB",
-      "logo": "bdo"
-    },
-    {
-      "year": "2014",
-      "company": "Papaya Group",
-      "type": "DISEÑADOR GRÁFICO",
-      "logo": "papayagroup"
+      "year": "2016 — 2018",
+      "company": "GitHub",
+      "type": "GRAPHIC DESIGNER & WEB DEVELOPER",
+      "logo": "https://cdn.simpleicons.org/github",
+      "description": "Developed corporate communications and digital assets, gaining experience in enterprise-level design requirements."
     }
   ],
   "projects": {
-    "gridColumns": 2
-  }
+    "gridColumns": 1
+  },
+  "testimonials": [
+    {
+      "text": "Edu's attention to detail and technical expertise transformed our vision into a stunning, functional reality.",
+      "author": "Client Name",
+      "company": "Company Name"
+    }
+  ]
 }

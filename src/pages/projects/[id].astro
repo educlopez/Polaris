@@ -21,11 +21,20 @@ const project = entry.data;
 import siteConfig from "../../config/site.json";
 const { company } = siteConfig;
 import { X } from "@lucide/astro";
+import { Button } from "@/components/ui/button";
 ---
 
 <Layout title={`${project.name} Case Study | Endless`}>
   <Fragment slot="left-content">
     <div class="flex w-full flex-col gap-6 lg:sticky lg:top-4">
+      <div class="flex items-center gap-2 mb-2">
+        <a
+          href="/"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          ← Back to projects
+        </a>
+      </div>
       <div class="flex flex-row gap-2 items-center">
         <a href="/" class="w-8 h-8">
           <Image
@@ -58,9 +67,7 @@ import { X } from "@lucide/astro";
           <div class="flex items-center gap-3">
             {project.caseStudy.links.map((link) => (
               <a href={link.url}>
-                <button class="inline-flex h-8 w-auto items-center justify-center whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-black text-white shadow-sm hover:bg-black/90">
-                  {link.text}
-                </button>
+                <Button>{link.text}</Button>
               </a>
             ))}
           </div>

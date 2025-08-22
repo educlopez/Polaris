@@ -7,9 +7,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import siteConfig from "../config/site.json";
-import Fade from "../components/fade.astro";
-import FloatNav from "../components/floatNav.astro";
+import siteConfig from "@/config/site.json";
+import Fade from "@/components/fade.astro";
 
 const { company } = siteConfig;
 ---
@@ -34,17 +33,16 @@ const { company } = siteConfig;
     <Fade
       side="top"
       background="white"
-      className="!sticky !h-[120px] z-2"
+      className="!fixed z-2"
+      height="30px"
       stop="25%"
       blur="4px"
     />
-    <FloatNav />
+
     <!-- Left static section -->
-    <main
-      class="flex lg:flex-row flex-col lg:justify-between gap-16 -my-[120px]"
-    >
+    <main class="flex lg:flex-row flex-col lg:justify-between gap-8">
       <div
-        class="flex flex-col gap-8 lg:justify-between py-8 px-4 w-full max-w-xs shrink-0 h-screen lg:sticky lg:top-0 z-10"
+        class="flex flex-col gap-8 lg:justify-between py-8 px-4 w-full max-w-sm shrink-0 h-full lg:sticky lg:top-0 z-10"
       >
         <slot name="left-content" />
         <div class="w-full flex flex-col gap-3">
@@ -60,7 +58,8 @@ const { company } = siteConfig;
     <Fade
       background="white"
       side="bottom"
-      className="!sticky !h-[120px] z-2"
+      className="!fixed z-2"
+      height="30px"
       stop="25%"
       blur="4px"
     />
