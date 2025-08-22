@@ -1,4 +1,4 @@
-# Eduardo Calvo - Personal Portfolio
+# Polaris - Personal Portfolio
 
 A modern, responsive personal portfolio website built with [Astro](https://astro.build), showcasing UI design and frontend development work. This portfolio features a clean, minimalist design with smooth animations and a focus on showcasing projects and professional experience.
 

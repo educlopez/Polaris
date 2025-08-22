@@ -36,14 +36,15 @@ import { Button } from "@/components/ui/button";
           </span>
         </div>
       </div>
-
       <div class="flex flex-col gap-3">
         <h1 class="text-balance font-semibold text-2xl">
-          {company.description}
+          {company.name}
         </h1>
-        <p class="text-sm">{company.longDescription}</p>
+        <h2 class="text-balance font-normal text-2xl">
+          {company.description}
+        </h2>
+        <p class="text-sm text-gray-500">{company.longDescription}</p>
       </div>
-
       <div class="flex items-center gap-3">
         <a href={contact.bookCall.url}>
           <Button>
