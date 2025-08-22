@@ -4,7 +4,7 @@ description: "A car giveaway platform for TheGrefg's community, featuring a mode
 cover: "./images/sorteorayo.png"
 coverAlt: "SorteoRayo car giveaway platform"
 logo:
-  image: "./images/sorteorayo.png"
+  image: "./images/logo-sorteorayo.png"
   fallback:
     text: "S"
     bgColor: "bg-green-500"

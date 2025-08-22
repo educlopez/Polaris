@@ -4,7 +4,7 @@ description: "AI-powered social media content generation tool that helps create 
 cover: "./images/airlume.png"
 coverAlt: "Airlume AI content generation interface"
 logo:
-  image: "./images/airlume.png"
+  image: "./images/logo-airlume.png"
   fallback:
     text: "A"
     bgColor: "bg-blue-500"

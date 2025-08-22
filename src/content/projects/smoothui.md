@@ -4,7 +4,7 @@ description: "React UI components with TailwindCSS & Motion animations for beaut
 cover: "./images/smoothui.png"
 coverAlt: "SmoothUI component showcase"
 logo:
-  image: "./images/smoothui.png"
+  image: "./images/logo-smoothui.png"
   fallback:
     text: "S"
     bgColor: "bg-pink-500"

@@ -4,7 +4,7 @@ description: "Contracts shouldn't be scary. With LawPhobia, you can instantly an
 cover: "./images/lawphobia.png"
 coverAlt: "LawPhobia AI contract analysis platform"
 logo:
-  image: "./images/lawphobia.png"
+  image: "./images/logo-lawphobia.png"
   fallback:
     text: "L"
     bgColor: "bg-purple-500"

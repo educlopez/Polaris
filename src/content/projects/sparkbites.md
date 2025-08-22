@@ -4,7 +4,7 @@ description: "A curated collection of beautiful websites to inspire your next pr
 cover: "./images/sparkbites.png"
 coverAlt: "SparkBites web design inspiration directory"
 logo:
-  image: "./images/sparkbites.png"
+  image: "./images/logo-sparkbites.png"
   fallback:
     text: "S"
     bgColor: "bg-amber-500"

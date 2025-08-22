@@ -4,7 +4,7 @@ description: "A JavaScript coding challenge platform that helps developers impro
 cover: "./images/adventjs.png"
 coverAlt: "AdventJS coding challenges platform"
 logo:
-  image: "./images/adventjs.png"
+  image: "./images/logo-adventjs.png"
   fallback:
     text: "A"
     bgColor: "bg-yellow-500"
