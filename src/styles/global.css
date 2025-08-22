@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-family-geist: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-sans: var(--font-family-geist);
   --color-brand: var(--color-brand);
   --color-brand-secondary: var(--color-brand-secondary);
   --color-smooth-50: var(--color-smooth-50);
@@ -186,5 +190,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-family-geist);
   }
 }
