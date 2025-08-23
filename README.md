@@ -1,89 +1,109 @@
-# Polaris - Personal Portfolio
+![hero](public/image.png)
 
-A modern, responsive personal portfolio website built with [Astro](https://astro.build), showcasing UI design and frontend development work. This portfolio features a clean, minimalist design with smooth animations and a focus on showcasing projects and professional experience.
+<p align="center">
+	<h1 align="center"><b>Polaris</b></h1>
+<p align="center">
+    A modern, responsive personal portfolio template built with <a href="https://astro.build">Astro</a>.
+    <br />
+    <br />
+    <a href="#whats-included"><strong>What's included</strong></a> ·
+    <a href="#prerequisites"><strong>Prerequisites</strong></a> ·
+    <a href="#getting-started"><strong>Getting Started</strong></a> ·
+    <a href="#how-to-use"><strong>How to use</strong></a> ·
+    <a href="#customization"><strong>Customization</strong></a>
+  </p>
+</p>
 
-## 🚀 Features
+Everything you need to build a stunning personal portfolio website. Polaris is an opinionated Astro template designed for designers and developers who want to showcase their work with a clean, modern aesthetic. Built with performance and user experience in mind, it provides a solid foundation that grows with your career.
 
-- **Modern Tech Stack**: Built with Astro, React, and Tailwind CSS
-- **Responsive Design**: Optimized for all devices and screen sizes
-- **Project Showcase**: Dynamic project pages with detailed case studies
-- **Smooth Animations**: Enhanced with Motion library for engaging interactions
-- **Content Management**: Markdown-based content for easy updates
-- **Performance Optimized**: Fast loading with Astro's static site generation
+## What's included
 
-## 🛠️ Tech Stack
+[Astro](https://astro.build/) - Static site generator<br>
+[React](https://reactjs.org/) - Interactive components<br>
+[Tailwind CSS](https://tailwindcss.com/) - Utility-first styling<br>
+[Lucide](https://lucide.dev/) - Beautiful icon library<br>
+[TypeScript](https://www.typescriptlang.org/) - Type safety<br>
+[MDX](https://mdxjs.com/) - Enhanced markdown for content<br>
+[Sharp](https://sharp.pixelplumbing.com/) - Image optimization<br>
+[Class Variance Authority](https://cva.style/) - Component variant management<br>
+[Radix UI](https://www.radix-ui.com/) - Accessible component primitives<br>
 
-- **Framework**: [Astro](https://astro.build) - Static site generator
-- **Styling**: [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
-- **Components**: [React](https://reactjs.org) - Interactive components
-- **Animations**: [Motion](https://motion.dev) - Smooth animations and transitions
-- **Icons**: [Lucide](https://lucide.dev) - Beautiful icon library
-- **UI Components**: [Radix UI](https://www.radix-ui.com) - Accessible component primitives
+## Directory Structure
 
-## 📁 Project Structure
-
-```text
-/
-├── public/                 # Static assets
+```
+.
+├── public/                    # Static assets
+│   ├── favicon.svg           # Site favicon
+│   └── image.png             # Hero image
 ├── src/
-│   ├── components/         # Reusable components
-│   │   ├── ui/            # UI components (buttons, dropdowns, etc.)
-│   │   ├── fade.astro     # Fade animation component
+│   ├── components/           # Reusable components
+│   │   ├── ui/              # UI components (buttons, dropdowns, etc.)
+│   │   ├── fade.astro       # Fade animation component
 │   │   └── listProjects.astro # Project listing component
 │   ├── config/
-│   │   └── site.json      # Site configuration and content
+│   │   └── site.json        # Site configuration and content
 │   ├── content/
-│   │   └── projects/      # Project markdown files and images
+│   │   └── projects/        # Project markdown files and images
 │   ├── layouts/
-│   │   └── Layout.astro   # Main layout component
+│   │   └── Layout.astro     # Main layout component
 │   ├── lib/
-│   │   └── utils.ts       # Utility functions
+│   │   └── utils.ts         # Utility functions
 │   ├── pages/
-│   │   ├── index.astro    # Homepage
-│   │   └── projects/      # Dynamic project pages
+│   │   ├── index.astro      # Homepage
+│   │   └── projects/        # Dynamic project pages
 │   └── styles/
-│       └── global.css     # Global styles
-├── astro.config.mjs       # Astro configuration
-├── components.json        # UI components configuration
-├── package.json           # Dependencies and scripts
-└── tsconfig.json          # TypeScript configuration
+│       └── global.css       # Global styles
+├── astro.config.mjs         # Astro configuration
+├── components.json          # UI components configuration
+├── package.json             # Dependencies and scripts
+├── tsconfig.json            # TypeScript configuration
+└── vercel.json              # Vercel deployment configuration
 ```
 
-## 🚀 Getting Started
+## Prerequisites
 
-### Prerequisites
+Node.js (version 18 or higher)<br>
+pnpm (recommended) or npm<br>
+Git<br>
 
-- Node.js (version 18 or higher)
-- pnpm (recommended) or npm
+## Getting Started
 
-### Installation
-
-1. Clone the repository:
+Clone this repo locally with the following command:
 
 ```bash
 git clone <repository-url>
-cd template
+cd polaris
 ```
 
-2. Install dependencies:
+1. Install dependencies using pnpm:
 
-```bash
+```sh
 pnpm install
-# or
-npm install
 ```
 
-3. Start the development server:
+2. Start the development server:
 
-```bash
+```sh
 pnpm dev
-# or
-npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:4321`
+3. Open your browser and navigate to `http://localhost:4321`
 
-## 📝 Available Scripts
+## How to use
+
+This template is designed to be a starting point for your personal portfolio. It includes everything you need to showcase your work professionally while maintaining excellent performance and user experience.
+
+### Key Features
+
+- **Modern Tech Stack**: Built with Astro for optimal performance and React for interactive components
+- **Responsive Design**: Fully responsive layout that looks great on all devices
+- **Project Showcase**: Dynamic project pages with detailed case studies using MDX
+- **Clean Design**: Minimalist aesthetic with smooth transitions and interactions
+- **Content Management**: Markdown-based content for easy updates and maintenance
+- **Performance Optimized**: Static site generation with optimized images and assets
+- **Accessible**: Built with accessibility in mind using Radix UI primitives
+
+### Available Scripts
 
 | Command          | Action                                           |
 | :--------------- | :----------------------------------------------- |
@@ -92,38 +112,32 @@ npm run dev
 | `pnpm preview`   | Preview your build locally, before deploying     |
 | `pnpm astro ...` | Run CLI commands like `astro add`, `astro check` |
 
-## 🎨 Customization
+## Customization
 
 ### Site Configuration
 
 Update `src/config/site.json` to modify:
 
 - Personal information and bio
-- Contact details
-- Professional experience
-- Project grid layout
+- Contact details and social links
+- Professional experience timeline
+- Project grid layout preferences
+- Company information and specialties
 
 ### Adding Projects
 
 1. Create a new markdown file in `src/content/projects/`
 2. Add project images to `src/content/projects/images/`
-3. Use the existing project structure as a template
+3. Use the existing project structure as a template with frontmatter for metadata
 
 ### Styling
 
 - Global styles are in `src/styles/global.css`
 - Component-specific styles use Tailwind CSS classes
-- Custom animations are handled through the Motion library
+- Smooth transitions and interactions built with CSS
+- UI components follow a consistent design system
 
-## 📱 Responsive Design
-
-The portfolio is fully responsive and optimized for:
-
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
-
-## 🚀 Deployment
+### Deployment
 
 This project can be deployed to any static hosting service:
 
@@ -132,14 +146,6 @@ This project can be deployed to any static hosting service:
 - **GitHub Pages**: Use GitHub Actions for automated deployment
 - **Any static hosting**: Upload the contents of the `dist` folder
 
-## 📄 License
+## Recognition
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## 👨‍💻 About
-
-**Eduardo Calvo** - UI Designer & Frontend Developer based in Madrid, Spain. Specializing in creating beautiful, functional, and user-friendly digital experiences through thoughtful UI design and modern frontend development.
-
----
-
-Built with ❤️ using [Astro](https://astro.build)
+Built with ❤️ by [Eduardo Calvo](https://github.com/educlopez) - UI Designer & Frontend Developer based in Madrid, Spain.
