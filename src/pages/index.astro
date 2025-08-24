@@ -57,25 +57,19 @@ import { Button } from "@/components/ui/button";
           </Button>
         </a>
       </div>
-      <div class="flex flex-col gap-4 w-full">
+      <div class="flex flex-col gap-3 w-full">
         {
           experience.map((exp) => (
-            <div class="group border border-transparent flex items-center justify-between py-4 px-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover:border-border">
-              <div class="flex items-center gap-4">
-                <div class="flex flex-col">
-                  <h3 class="font-semibold text-sm text-gray-900 group flex gap-2 flex-row items-center">
-                    {exp.company}
-                    <ArrowUpRightIcon class="w-4 h-4 group-hover:flex hidden transition-transform" />
-                  </h3>
-                  <span class="text-xs text-gray-500 font-medium p-0.5 ">
-                    {exp.year}
-                  </span>
-                  <p class="text-xs text-gray-500  tracking-wide">{exp.type}</p>
-                </div>
+            <div class="group relative flex flex-col py-3 px-3 rounded-lg hover:bg-gray-50 transition-all duration-300 ease-in-out cursor-pointer">
+              <div class="flex items-center justify-between w-full">
+                <h3 class="font-medium text-sm text-gray-900">{exp.company}</h3>
+                <span class="text-xs text-gray-400">{exp.year}</span>
               </div>
-              <div class="text-right opacity-0 group-hover:opacity-100 transition-opacity">
-                <div class="w-10 h-10 flex items-center justify-center">
-                  <img src={exp.logo} alt={exp.company} class="w-8" />
+              <div class="overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="max-h-0 group-hover:max-h-20 transition-all duration-300 ease-in-out">
+                  <p class="text-xs text-gray-500 pt-2 leading-relaxed">
+                    {exp.description}
+                  </p>
                 </div>
               </div>
             </div>
