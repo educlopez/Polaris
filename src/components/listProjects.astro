@@ -9,10 +9,46 @@ type Project = CollectionEntry<"projects">;
 
 const { projects: projectsConfig } = siteConfig;
 const gridCols = projectsConfig.gridColumns || 1;
-const gridClass =
-  gridCols === 2
-    ? "grid grid-cols-1 lg:grid-cols-2 gap-2"
-    : "flex flex-col space-y-2";
+
+// Generate dynamic grid classes based on the number of columns
+const generateGridClass = (columns: number) => {
+  if (columns === 1) {
+    return "flex flex-col space-y-2";
+  }
+
+  // For 2+ columns, use CSS Grid with responsive breakpoints
+  // We need to explicitly define all possible classes so Tailwind includes them
+  const baseCols = Math.min(columns, 1); // 1 column on mobile
+  const mdCols = Math.min(columns, 2); // 2 columns on medium screens
+  const lgCols = Math.min(columns, 3); // 3 columns on large screens
+  const xlCols = Math.min(columns, 4); // 4 columns on xl screens
+  const twoXlCols = Math.min(columns, 6); // Max 6 columns on 2xl screens
+
+  // Build the class string with explicit class names
+  let gridClass = "grid gap-2";
+
+  // Add responsive column classes
+  if (baseCols === 1) gridClass += " grid-cols-1";
+  if (mdCols === 1) gridClass += " md:grid-cols-1";
+  if (mdCols === 2) gridClass += " md:grid-cols-2";
+  if (lgCols === 1) gridClass += " lg:grid-cols-1";
+  if (lgCols === 2) gridClass += " lg:grid-cols-2";
+  if (lgCols === 3) gridClass += " lg:grid-cols-3";
+  if (xlCols === 1) gridClass += " xl:grid-cols-1";
+  if (xlCols === 2) gridClass += " xl:grid-cols-2";
+  if (xlCols === 3) gridClass += " xl:grid-cols-3";
+  if (xlCols === 4) gridClass += " xl:grid-cols-4";
+  if (twoXlCols === 1) gridClass += " 2xl:grid-cols-1";
+  if (twoXlCols === 2) gridClass += " 2xl:grid-cols-2";
+  if (twoXlCols === 3) gridClass += " 2xl:grid-cols-3";
+  if (twoXlCols === 4) gridClass += " 2xl:grid-cols-4";
+  if (twoXlCols === 5) gridClass += " 2xl:grid-cols-5";
+  if (twoXlCols === 6) gridClass += " 2xl:grid-cols-6";
+
+  return gridClass;
+};
+
+const gridClass = generateGridClass(gridCols);
 ---
 
 <div class={gridClass}>
