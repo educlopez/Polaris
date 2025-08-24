@@ -1,6 +1,6 @@
 ---
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import Layout from "@/layouts/layout-principal.astro";
 import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
@@ -18,7 +18,7 @@ interface Props {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const project = entry.data;
-import siteConfig from "../../config/site.json";
+import siteConfig from "@/config/site.json";
 const { company } = siteConfig;
 import { X } from "@lucide/astro";
 import { Button } from "@/components/ui/button";

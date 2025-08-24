@@ -6,6 +6,7 @@ const projects = defineCollection({
     z.object({
       name: z.string(),
       description: z.string(),
+      date: z.date(),
       cover: image(),
       coverAlt: z.string(),
       logo: z.object({

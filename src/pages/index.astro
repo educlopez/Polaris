@@ -1,12 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import siteConfig from "../config/site.json";
+import Layout from "@/layouts/layout-principal.astro";
+import siteConfig from "@/config/site.json";
 
-import ListProjects from "../components/listProjects.astro";
+import ListProjects from "@/components/list-projects.astro";
 const { company, contact, experience } = siteConfig;
 
 import { Image } from "astro:assets";
-import { ArrowUpRightIcon } from "@lucide/astro";
 import { Button } from "@/components/ui/button";
 ---
 

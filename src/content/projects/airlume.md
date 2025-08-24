@@ -1,6 +1,7 @@
 ---
 name: "Airlume"
 description: "AI-powered social media content generation tool that helps create engaging posts and threads in seconds."
+date: 2025-06-15
 cover: "./images/airlume.png"
 coverAlt: "Airlume AI content generation interface"
 logo:

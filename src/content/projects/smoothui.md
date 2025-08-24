@@ -1,6 +1,7 @@
 ---
 name: "SmoothUI"
 description: "React UI components with TailwindCSS & Motion animations for beautiful websites and apps."
+date: 2024-08-15
 cover: "./images/smoothui.png"
 coverAlt: "SmoothUI component showcase"
 logo:
