@@ -66,6 +66,81 @@ Polaris is built with modern web technologies:
 - **Image Optimization**: Built-in image processing and optimization
 - **SEO Optimization**: Meta tags, structured data, and performance optimizations
 
+### Project Structure
+
+The template follows a clean, organized structure:
+
+```bash
+polaris/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── content/        # Content collections
+│   ├── layouts/        # Page layouts
+│   ├── pages/          # Astro pages
+│   └── styles/         # Global styles
+├── public/             # Static assets
+└── astro.config.mjs    # Astro configuration
+```
+
+### Content Management
+
+Projects are managed through Astro's Content Collections:
+
+```typescript
+// src/content/config.ts
+import { defineCollection, z } from "astro:content";
+
+const projects = defineCollection({
+  type: "content",
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+    date: z.date(),
+    cover: z.string(),
+    coverAlt: z.string(),
+    logo: z.object({
+      image: z.string(),
+      fallback: z.object({
+        text: z.string(),
+        bgColor: z.string(),
+      }),
+    }),
+    caseStudy: z.object({
+      challenge: z.string(),
+      solution: z.string(),
+      results: z.array(z.string()),
+      links: z.array(
+        z.object({
+          text: z.string(),
+          url: z.string(),
+        })
+      ),
+    }),
+  }),
+});
+
+export const collections = { projects };
+```
+
+### Styling with Tailwind CSS
+
+The template uses Tailwind CSS for utility-first styling:
+
+```css
+/* Custom CSS variables for theming */
+:root {
+  --color-brand: oklch(0.72 0.2 352.53);
+  --color-smooth-50: oklch(99.11% 0 0);
+  --color-smooth-1000: oklch(20.46% 0 0);
+}
+
+/* Dark mode support */
+.dark {
+  --color-smooth-50: oklch(20.02% 0 0);
+  --color-smooth-1000: oklch(94.61% 0 0);
+}
+```
+
 ## Key Features
 
 - **Project Showcase**: Beautiful grid layout with hover effects and project details

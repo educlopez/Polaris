@@ -13,4 +13,12 @@ export default defineConfig({
       entrypoint: "astro/assets/services/sharp",
     },
   },
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+    },
+  },
 });
