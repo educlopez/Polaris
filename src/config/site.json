@@ -1,4 +1,8 @@
 {
+  "site": {
+    "url": "https://polaris-six-rust.vercel.app",
+    "name": "Polaris Portfolio"
+  },
   "company": {
     "name": "Eduardo Calvo",
     "logo": "https://github.com/educlopez.png",

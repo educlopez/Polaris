@@ -2,6 +2,7 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import Layout from "@/layouts/layout-principal.astro";
 import { Image } from "astro:assets";
+import { getAbsoluteUrl } from "@/lib/utils";
 
 // Helper functions to extract information from content
 function extractTechStack(content: string): string[] {
@@ -121,7 +122,20 @@ const contentText = entry.body || "";
 const githubLink = extractGitHubLink(contentText);
 ---
 
-<Layout title={`${project.name} Case Study | Endless`}>
+<Layout
+  title={`${project.name} Case Study | ${company.name}`}
+  description={project.description}
+  keywords={project.tags?.join(", ") || "web development, case study, project"}
+  type="article"
+  image={getAbsoluteUrl(
+    project.cover.src,
+    Astro.site?.href || siteConfig.site.url
+  )}
+  publishedTime={project.date}
+  section="Projects"
+  tags={project.tags || []}
+  twitterCard="summary_large_image"
+>
   <Fragment slot="left-content">
     <div class="project-sidebar lg:sticky lg:top-4 space-y-8">
       <!-- Back Navigation -->
@@ -177,13 +191,15 @@ const githubLink = extractGitHubLink(contentText);
       {
         project.caseStudy.links && (
           <div class="flex flex-row gap-2">
-            {project.caseStudy.links.map((link, index) => (
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                <Button variant={index === 0 ? "default" : "outline"}>
-                  {link.text}
-                </Button>
-              </a>
-            ))}
+            {project.caseStudy.links.map(
+              (link: { url: string; text: string }, index: number) => (
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  <Button variant={index === 0 ? "default" : "outline"}>
+                    {link.text}
+                  </Button>
+                </a>
+              )
+            )}
           </div>
         )
       }

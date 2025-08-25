@@ -14,13 +14,38 @@ import {
   BookOpen,
 } from "@lucide/astro";
 
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
+import Head from "@/components/head.astro";
 import siteConfig from "@/config/site.json";
 import Fade from "@/components/fade.astro";
+
+// Extend the Props interface to include all head options
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  author?: string;
+  image?: string;
+  url?: string;
+  type?: "website" | "article" | "profile";
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  tags?: string[];
+  twitterCard?: "summary" | "summary_large_image" | "app" | "player";
+  twitterCreator?: string;
+  twitterSite?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  canonical?: string;
+  ogLocale?: string;
+  ogSiteName?: string;
+  themeColor?: string;
+  colorScheme?: "light" | "dark" | "light dark";
+  viewport?: string;
+  robots?: string;
+}
+
+const props = Astro.props;
 
 const { company, contact } = siteConfig;
 
@@ -48,15 +73,7 @@ const footerSocials = [
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="UI Designer & Frontend Developer based in Madrid"
-    />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <Head {...props} />
     <ClientRouter />
   </head>
   <body
