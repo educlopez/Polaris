@@ -54,18 +54,31 @@ const generateGridClass = (columns: number) => {
 };
 
 const gridClass = generateGridClass(gridCols);
+
+// Calculate how many projects should be eagerly loaded based on grid layout
+// We want to eagerly load the first 3 rows worth of projects
+// For responsive design, we'll use the largest column count to be safe
+const getEagerLoadCount = (columns: number) => {
+  // For 1 column: 3 projects (3 rows)
+  // For 2 columns: 6 projects (3 rows × 2 columns)
+  // For 3+ columns: 9 projects (3 rows × 3 columns) - cap at 3 columns for performance
+  const maxColumns = Math.min(columns, 3);
+  return 3 * maxColumns;
+};
+
+const eagerLoadCount = getEagerLoadCount(gridCols);
 ---
 
 <div class={gridClass}>
   {
-    sortedProjects.map((project: Project) => (
+    sortedProjects.map((project: Project, index: number) => (
       <a
         href={`/projects/${project.id}`}
         class="relative rounded-lg lg:rounded-2xl overflow-hidden hover:opacity-95 transition-opacity aspect-[16/10]"
       >
         <Image
           alt={project.data.coverAlt}
-          loading="lazy"
+          loading={index < eagerLoadCount ? "eager" : "lazy"}
           width="3552"
           height="2304"
           decoding="async"
@@ -73,13 +86,16 @@ const gridClass = generateGridClass(gridCols);
           class="w-full h-full object-cover"
           transition:name={`project-${project.id}`}
         />
-        <div class="absolute bottom-4 left-4 items-center gap-1.5 hidden lg:flex text-foreground">
+        <div class="absolute bottom-4 left-4 items-center gap-1.5 lg:flex text-foreground opacity-0 lg:opacity-100">
           <div class="shrink-0">
             <Image
               src={project.data.logo.image}
               width="32"
               height="32"
               alt={`${project.data.name} logo`}
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
               class="w-6 h-6 rounded-full object-cover"
               onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"
             />

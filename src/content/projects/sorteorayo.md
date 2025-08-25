@@ -25,7 +25,7 @@ caseStudy:
       url: "https://www.sorteorayo.com/"
 ---
 
-# Project Overview
+## Project Overview
 
 SorteoRayo is a car giveaway platform designed for TheGrefg's community, featuring a modern and engaging design that creates excitement and trust among participants. The platform provides a seamless experience for users to enter the car giveaway while maintaining transparency and community engagement.
 

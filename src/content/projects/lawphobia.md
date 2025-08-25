@@ -25,7 +25,7 @@ caseStudy:
       url: "https://www.lawphobia.com/"
 ---
 
-# Project Overview
+## Project Overview
 
 LawPhobia is an AI-powered contract analysis platform that makes understanding legal contracts simple and stress-free. The platform uses artificial intelligence to break down complex legal language into clear, understandable terms, while also connecting users with trusted lawyers when they need additional help.
 

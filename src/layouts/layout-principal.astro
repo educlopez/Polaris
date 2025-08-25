@@ -1,6 +1,18 @@
 ---
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import {
+  Linkedin,
+  Github,
+  Dribbble,
+  Twitter,
+  Mail,
+  Instagram,
+  Youtube,
+  Palette,
+  Figma,
+  BookOpen,
+} from "@lucide/astro";
 
 interface Props {
   title: string;
@@ -10,7 +22,27 @@ const { title } = Astro.props;
 import siteConfig from "@/config/site.json";
 import Fade from "@/components/fade.astro";
 
-const { company } = siteConfig;
+const { company, contact } = siteConfig;
+
+// Define which social networks to show in footer (showing only those with actual URLs)
+const footerSocials = [
+  { name: "LinkedIn", url: contact.linkedin, icon: Linkedin },
+  { name: "GitHub", url: contact.github, icon: Github },
+  { name: "Dribbble", url: contact.dribbble, icon: Dribbble },
+  { name: "Twitter", url: contact.twitter, icon: Twitter },
+  { name: "Instagram", url: contact.instagram, icon: Instagram },
+  { name: "YouTube", url: contact.youtube, icon: Youtube },
+  { name: "Behance", url: contact.behance, icon: Palette },
+  { name: "Figma", url: contact.figma, icon: Figma },
+  { name: "Medium", url: contact.medium, icon: BookOpen },
+].filter(
+  (social) =>
+    social.url &&
+    social.url !== "" &&
+    social.url !== "#" &&
+    !social.url.includes("placeholder") &&
+    !social.url.includes("example.com")
+);
 ---
 
 <!doctype html>
@@ -47,9 +79,28 @@ const { company } = siteConfig;
       >
         <slot name="left-content" />
         <!-- Desktop footer - positioned within left column -->
-        <div class="hidden lg:block w-full flex flex-col gap-3">
-          <p class="text-xs text-gray-500">{company.footerText}</p>
-          <p class="text-xs text-gray-500">{company.copyright}</p>
+        <div class="hidden lg:block w-full flex-col gap-4">
+          <!-- Social Links -->
+          <div class="flex items-center gap-3 mb-4">
+            {
+              footerSocials.map((social) => {
+                const IconComponent = social.icon;
+                return (
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-foreground/70 hover:text-foreground transition-colors"
+                    aria-label={`Visit ${social.name}`}
+                  >
+                    <IconComponent class="w-4 h-4" />
+                  </a>
+                );
+              })
+            }
+          </div>
+          <p class="text-xs text-foreground/70">{company.footerText}</p>
+          <p class="text-xs text-foreground/70">{company.copyright}</p>
         </div>
       </div>
       <!-- Right scrollable section -->
@@ -60,9 +111,28 @@ const { company } = siteConfig;
 
     <!-- Mobile footer - positioned at bottom of page -->
     <footer class="lg:hidden w-full py-8 px-4 border-t border-gray-200 mt-auto">
-      <div class="w-full flex flex-col gap-3">
-        <p class="text-xs text-gray-500">{company.footerText}</p>
-        <p class="text-xs text-gray-500">{company.copyright}</p>
+      <div class="w-full flex flex-col gap-4">
+        <!-- Social Links -->
+        <div class="flex items-center gap-4 mb-4">
+          {
+            footerSocials.map((social) => {
+              const IconComponent = social.icon;
+              return (
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-foreground/70 hover:text-foreground transition-colors"
+                  aria-label={`Visit ${social.name}`}
+                >
+                  <IconComponent class="w-5 h-5" />
+                </a>
+              );
+            })
+          }
+        </div>
+        <p class="text-xs text-foreground/70">{company.footerText}</p>
+        <p class="text-xs text-foreground/70">{company.copyright}</p>
       </div>
     </footer>
     <Fade

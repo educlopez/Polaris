@@ -27,9 +27,9 @@ caseStudy:
       url: "https://github.com/educlopez/polaris"
 ---
 
-# Project Overview
+## Project Overview
 
-Polaris is a modern, minimalist portfolio template designed for developers and designers who want to showcase their projects with elegance and simplicity. Built with Astro for optimal performance, it features a clean design that puts your work front and center while maintaining excellent developer experience.
+[Polaris](https://polaris-six-rust.vercel.app) is a modern, minimalist portfolio template designed for developers and designers who want to showcase their projects with elegance and simplicity. Built with Astro for optimal performance, it features a clean design that puts your work front and center while maintaining excellent developer experience.
 
 ## The Challenge
 
@@ -59,9 +59,9 @@ I designed Polaris to address these challenges by providing:
 
 Polaris is built with modern web technologies:
 
-- **Astro**: For static site generation and optimal performance
-- **TypeScript**: For type safety and better developer experience
-- **Tailwind CSS**: For utility-first styling and rapid development
+- **[Astro](https://astro.build)**: For static site generation and optimal performance
+- **[TypeScript](https://www.typescriptlang.org)**: For type safety and better developer experience
+- **[Tailwind CSS](https://tailwindcss.com)**: For utility-first styling and rapid development
 - **Content Collections**: For structured content management
 - **Image Optimization**: Built-in image processing and optimization
 - **SEO Optimization**: Meta tags, structured data, and performance optimizations

@@ -25,7 +25,7 @@ caseStudy:
       url: "https://adventjs.dev/challenges"
 ---
 
-# Project Overview
+## Project Overview
 
 AdventJS is a JavaScript coding challenge platform inspired by Advent of Code, designed to help developers improve their JavaScript skills through daily programming exercises during the advent season. The platform provides structured learning with progressive difficulty levels and a supportive community.
 

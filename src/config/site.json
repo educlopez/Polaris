@@ -31,16 +31,22 @@
   "contact": {
     "bookCall": {
       "text": "Book a call",
-      "url": "#"
+      "url": "/"
     },
     "chat": {
       "text": "Chat",
-      "url": "#"
+      "url": "/"
     },
     "email": "hello@eduardocalvolopez.com",
     "linkedin": "https://linkedin.com/in/educlopez",
     "github": "https://github.com/educlopez",
-    "dribbble": "https://dribbble.com/educlopez"
+    "dribbble": "https://dribbble.com/educlopez",
+    "twitter": "https://twitter.com/educlopez",
+    "instagram": "https://instagram.com/educlopez",
+    "youtube": "",
+    "behance": "",
+    "figma": "https://figma.com/@educlopez",
+    "medium": ""
   },
   "experience": [
     {
@@ -73,7 +79,7 @@
     }
   ],
   "projects": {
-    "gridColumns": 1
+    "gridColumns": 2
   },
   "testimonials": [
     {

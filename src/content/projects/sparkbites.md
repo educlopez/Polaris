@@ -24,7 +24,7 @@ caseStudy:
       url: "https://sparkbites.dev/submit"
 ---
 
-# Project Overview
+## Project Overview
 
 SparkBites is a web design inspiration directory that serves as a curated collection of beautiful websites to inspire designers and developers. The platform focuses on discovering and showcasing exceptional web design from across the internet, helping creative professionals find their next favorite website design.
 

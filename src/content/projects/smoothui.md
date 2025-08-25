@@ -25,7 +25,7 @@ caseStudy:
       url: "https://github.com/smoothui/smoothui"
 ---
 
-# Project Overview
+## Project Overview
 
 SmoothUI is a comprehensive React UI component library that provides beautifully designed components with smooth animations. Built using modern React patterns, Tailwind CSS v4, and Motion, it aims to enhance user experience through delightful interactions and responsive design.
 

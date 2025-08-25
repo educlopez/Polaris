@@ -3,6 +3,89 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import Layout from "@/layouts/layout-principal.astro";
 import { Image } from "astro:assets";
 
+// Helper functions to extract information from content
+function extractTechStack(content: string): string[] {
+  const techKeywords = [
+    "React",
+    "Next.js",
+    "Vue",
+    "Angular",
+    "Svelte",
+    "Astro",
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "Node.js",
+    "Express",
+    "Supabase",
+    "Firebase",
+    "PostgreSQL",
+    "MongoDB",
+    "MySQL",
+    "Tailwind CSS",
+    "CSS",
+    "HTML",
+    "GraphQL",
+    "REST API",
+    "AWS",
+    "Vercel",
+    "Netlify",
+    "Docker",
+    "Git",
+    "OpenAI",
+    "Clerk",
+    "Stripe",
+    "Prisma",
+    "tRPC",
+  ];
+
+  const foundTech = techKeywords.filter((tech) =>
+    content.toLowerCase().includes(tech.toLowerCase())
+  );
+
+  return foundTech.slice(0, 8); // Limit to 8 most relevant
+}
+
+function extractDuration(content: string): string | null {
+  const durationRegex = /(\d+)\s*(week|month|day)s?/i;
+  const match = content.match(durationRegex);
+  if (match) {
+    return `${match[1]} ${match[2]}${match[1] === "1" ? "" : "s"}`;
+  }
+  return null;
+}
+
+function extractRole(content: string): string | null {
+  const roleKeywords = [
+    "full-stack developer",
+    "frontend developer",
+    "backend developer",
+    "lead developer",
+    "senior developer",
+    "junior developer",
+    "software engineer",
+    "web developer",
+    "mobile developer",
+    "architect",
+    "consultant",
+    "freelancer",
+  ];
+
+  const lowerContent = content.toLowerCase();
+  for (const role of roleKeywords) {
+    if (lowerContent.includes(role)) {
+      return role.charAt(0).toUpperCase() + role.slice(1);
+    }
+  }
+  return null;
+}
+
+function extractGitHubLink(content: string): string | null {
+  const githubRegex = /https:\/\/github\.com\/[^\s]+/;
+  const match = content.match(githubRegex);
+  return match ? match[0] : null;
+}
+
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((entry) => ({
@@ -20,21 +103,38 @@ const { Content } = await render(entry);
 const project = entry.data;
 import siteConfig from "@/config/site.json";
 const { company } = siteConfig;
-import { X } from "@lucide/astro";
+import {
+  X,
+  ExternalLink,
+  Calendar,
+  Target,
+  Award,
+  Code,
+  Globe,
+  Github,
+  ExternalLink as ExternalLinkIcon,
+} from "@lucide/astro";
 import { Button } from "@/components/ui/button";
+
+// Extract content text for analysis
+const contentText = entry.body || "";
+const githubLink = extractGitHubLink(contentText);
 ---
 
 <Layout title={`${project.name} Case Study | Endless`}>
   <Fragment slot="left-content">
-    <div class="flex w-full flex-col gap-6 lg:sticky lg:top-4">
-      <div class="flex items-center gap-2 mb-2">
+    <div class="project-sidebar lg:sticky lg:top-4 space-y-8">
+      <!-- Back Navigation -->
+      <div class="flex items-center gap-2">
         <a
           href="/"
-          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          class="text-sm text-foreground/70 hover:text-foreground transition-colors"
         >
           ← Back to projects
         </a>
       </div>
+
+      <!-- Project Header -->
       <div class="flex flex-row gap-2 items-center">
         <a href="/" class="w-8 h-8">
           <Image
@@ -43,6 +143,9 @@ import { Button } from "@/components/ui/button";
             width="32"
             height="32"
             class="rounded-full object-cover w-full h-full"
+            loading="eager"
+            decoding="sync"
+            fetchpriority="high"
           />
         </a>
         <X />
@@ -53,28 +156,73 @@ import { Button } from "@/components/ui/button";
             width="32"
             height="32"
             class="rounded-full object-cover w-full h-full"
+            loading="eager"
+            decoding="sync"
+            fetchpriority="high"
           />
         </div>
       </div>
+
+      <!-- Project Title & Description -->
       <div class="flex flex-col gap-3">
         <h1 class="text-balance font-semibold text-2xl">
           {project.name}
         </h1>
-        <p class="text-sm">{project.description}</p>
+        <p class="text-sm text-foreground/70 leading-relaxed">
+          {project.description}
+        </p>
       </div>
+
+      <!-- Project Links -->
       {
         project.caseStudy.links && (
-          <div class="flex items-center gap-3">
-            {project.caseStudy.links.map((link) => (
-              <a href={link.url}>
-                <Button>{link.text}</Button>
+          <div class="flex flex-row gap-2">
+            {project.caseStudy.links.map((link, index) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                <Button variant={index === 0 ? "default" : "outline"}>
+                  {link.text}
+                </Button>
               </a>
             ))}
           </div>
         )
       }
+      <!-- Challenge & Solution -->
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">Challenge</h3>
+          <p class="text-sm text-foreground/70 leading-relaxed">
+            {project.caseStudy.challenge}
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold">Solution</h3>
+          <p class="text-sm text-foreground/70 leading-relaxed">
+            {project.caseStudy.solution}
+          </p>
+        </div>
+      </div>
+
+      <!-- GitHub Link (if available) -->
+      {
+        githubLink && (
+          <div class="space-y-3">
+            <h3 class="section-title">
+              <Github class="w-4 h-4" />
+              Source Code
+            </h3>
+            <a href={githubLink} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="w-full">
+                View on GitHub
+              </Button>
+            </a>
+          </div>
+        )
+      }
     </div>
   </Fragment>
+
   <Fragment slot="right-content">
     <Image
       src={project.cover}
@@ -83,11 +231,71 @@ import { Button } from "@/components/ui/button";
       height="675"
       class="w-full aspect-video object-cover rounded-xl mb-12"
       transition:name={`project-${entry.id}`}
+      loading="eager"
+      decoding="sync"
+      fetchpriority="high"
     />
     <div class="grid gap-12">
       <article class="prose-custom">
         <Content />
       </article>
+
+      <!-- Project Links Footer -->
+      <div class="border-t border-border pt-12">
+        <h2 class="text-xl font-semibold mb-6">More Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {
+            (await getCollection("projects"))
+              .filter((p) => p.id !== entry.id)
+              .sort(
+                (a, b) =>
+                  new Date(b.data.date).getTime() -
+                  new Date(a.data.date).getTime()
+              )
+              .slice(0, 3)
+              .map((project) => (
+                <a
+                  href={`/projects/${project.id}`}
+                  class="block rounded-lg overflow-hidden hover:opacity-95 transition-opacity"
+                >
+                  <div class="aspect-[16/10] relative">
+                    <Image
+                      src={project.data.cover}
+                      alt={project.data.coverAlt}
+                      width="400"
+                      height="250"
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div class="absolute bottom-3 left-3 items-center gap-1.5 flex text-foreground opacity-0 hover:opacity-100 transition-opacity">
+                      <div class="shrink-0">
+                        <Image
+                          src={project.data.logo.image}
+                          width="24"
+                          height="24"
+                          alt={`${project.data.name} logo`}
+                          loading="lazy"
+                          decoding="async"
+                          class="w-5 h-5 rounded-full object-cover"
+                          onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"
+                        />
+                        <div
+                          class={`w-5 h-5 ${project.data.logo.fallback.bgColor} rounded-full hidden items-center justify-center text-white text-xs`}
+                        >
+                          {project.data.logo.fallback.text}
+                        </div>
+                      </div>
+                      <div class="text-xs font-semibold mix-blend-difference text-white drop-shadow-lg">
+                        {project.data.name}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))
+          }
+        </div>
+      </div>
     </div>
   </Fragment>
 </Layout>

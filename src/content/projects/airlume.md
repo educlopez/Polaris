@@ -25,7 +25,7 @@ caseStudy:
       url: "https://airlume.vercel.app/sign-up"
 ---
 
-# Project Overview
+## Project Overview
 
 Airlume is a modern AI-powered tool designed to revolutionize social media content creation. Built with Next.js, Supabase, Clerk, and OpenAI, it helps content creators generate engaging threads and viral posts in seconds, saving time while sparking creativity and growing their audience.
 
