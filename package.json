@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
     "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.5.1",
     "@lucide/astro": "^0.541.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/vite": "^4.1.12",

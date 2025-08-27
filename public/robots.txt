@@ -1,0 +1,45 @@
+# Robots.txt for Polaris Portfolio
+# https://polaris-six-rust.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://polaris-six-rust.vercel.app/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block common bots that might cause issues
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# Disallow any admin or private areas (if any exist in the future)
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /api/
+
+# Allow all assets
+Allow: /_astro/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+Allow: /*.ico
