@@ -1,0 +1,15 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+minimumReleaseAgeExclude:
+  - astro@7.0.3
+# Security overrides — force patched versions of vulnerable transitive deps
+# (GitHub/Dependabot + pnpm audit advisories). All same-major, safe bumps.
+overrides:
+  "picomatch@<2.3.2": ">=2.3.2 <3"
+  "picomatch@>=4.0.0 <4.0.4": ">=4.0.4 <5"
+  "js-yaml@>=4.0.0 <4.2.0": "4.2.0"
+  "fast-uri@<3.1.2": ">=3.1.2 <4"
+  "smol-toml@<1.6.1": ">=1.6.1 <2"
+  "yaml@>=2.0.0 <2.8.3": ">=2.8.3 <3"
+  "@babel/core@<7.29.1": ">=7.29.1 <8"
