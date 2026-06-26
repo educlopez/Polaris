@@ -131,7 +131,7 @@ const githubLink = extractGitHubLink(contentText);
     project.cover.src,
     Astro.site?.href || siteConfig.site.url
   )}
-  publishedTime={project.date}
+  publishedTime={project.date.toISOString()}
   section="Projects"
   tags={project.tags || []}
   twitterCard="summary_large_image"

@@ -1,5 +1,5 @@
-import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async ({ site }) => {
   if (!site) {
@@ -40,7 +40,7 @@ ${pages
     <lastmod>${page.lastmod.toISOString()}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-  </url>`
+  </url>`,
   )
   .join("\n")}
 </urlset>`;

@@ -1,4 +1,4 @@
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -33,7 +33,7 @@ export function truncateText(text: string, maxLength: number): string {
  */
 export function generateMetaDescription(
   content: string,
-  maxLength: number = 160
+  maxLength: number = 160,
 ): string {
   // Remove HTML tags and extra whitespace
   const cleanContent = content
@@ -49,7 +49,7 @@ export function generateMetaDescription(
  */
 export function extractKeywords(
   content: string,
-  maxKeywords: number = 10
+  maxKeywords: number = 10,
 ): string[] {
   // Remove HTML tags
   const cleanContent = content.replace(/<[^>]*>/g, "");
