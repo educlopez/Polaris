@@ -3,7 +3,10 @@
 <p align="center">
 	<h1 align="center"><b>Polaris</b></h1>
 <p align="center">
-    A modern, responsive personal portfolio template built with <a href="https://astro.build">Astro</a>.
+    A modern, responsive personal portfolio template built with <a href="https://astro.build">Astro 7</a>.
+    <br />
+    <br />
+    <a href="https://github.com/educlopez/Polaris/actions/workflows/ci.yml"><img src="https://github.com/educlopez/Polaris/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
     <br />
     <br />
     <a href="#whats-included"><strong>What's included</strong></a> ·
@@ -18,7 +21,7 @@ Everything you need to build a stunning personal portfolio website. Polaris is a
 
 ## What's included
 
-[Astro](https://astro.build/) - Static site generator<br>
+[Astro 7](https://astro.build/) - Static site generator (Vite 8 / Rolldown, Rust compiler, Sätteri markdown)<br>
 [React](https://reactjs.org/) - Interactive components<br>
 [Tailwind CSS](https://tailwindcss.com/) - Utility-first styling<br>
 [Lucide](https://lucide.dev/) - Beautiful icon library<br>
@@ -27,6 +30,7 @@ Everything you need to build a stunning personal portfolio website. Polaris is a
 [Sharp](https://sharp.pixelplumbing.com/) - Image optimization<br>
 [Class Variance Authority](https://cva.style/) - Component variant management<br>
 [Radix UI](https://www.radix-ui.com/) - Accessible component primitives<br>
+[Biome](https://biomejs.dev/) - Fast linter & formatter<br>
 
 ## Directory Structure
 
@@ -62,8 +66,8 @@ Everything you need to build a stunning personal portfolio website. Polaris is a
 
 ## Prerequisites
 
-Node.js (version 18 or higher)<br>
-pnpm (recommended) or npm<br>
+Node.js (version 22.12 or higher — required by Astro 7)<br>
+pnpm (recommended)<br>
 Git<br>
 
 ## Getting Started
@@ -110,6 +114,10 @@ This template is designed to be a starting point for your personal portfolio. It
 | `pnpm dev`       | Starts local dev server at `localhost:4321`      |
 | `pnpm build`     | Build your production site to `./dist/`          |
 | `pnpm preview`   | Preview your build locally, before deploying     |
+| `pnpm check`     | Type-check the project with `astro check`        |
+| `pnpm lint`      | Lint & format check with Biome                   |
+| `pnpm lint:fix`  | Apply safe Biome lint/format fixes               |
+| `pnpm format`    | Format the codebase with Biome                   |
 | `pnpm astro ...` | Run CLI commands like `astro add`, `astro check` |
 
 ## Customization
