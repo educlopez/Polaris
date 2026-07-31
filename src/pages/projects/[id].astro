@@ -1,11 +1,14 @@
 ---
-import { getCollection, render, type CollectionEntry } from "astro:content";
-import Layout from "@/layouts/layout-principal.astro";
 import { Image } from "astro:assets";
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "@/layouts/layout-principal.astro";
 import { getAbsoluteUrl } from "@/lib/utils";
 
+const DURATION_REGEX = /(\d+)\s*(week|month|day)s?/i;
+const GITHUB_REGEX = /https:\/\/github\.com\/\S+/;
+
 // Helper functions to extract information from content
-function extractTechStack(content: string): string[] {
+function _extractTechStack(content: string): string[] {
   const techKeywords = [
     "React",
     "Next.js",
@@ -47,16 +50,15 @@ function extractTechStack(content: string): string[] {
   return foundTech.slice(0, 8); // Limit to 8 most relevant
 }
 
-function extractDuration(content: string): string | null {
-  const durationRegex = /(\d+)\s*(week|month|day)s?/i;
-  const match = content.match(durationRegex);
+function _extractDuration(content: string): string | null {
+  const match = content.match(DURATION_REGEX);
   if (match) {
     return `${match[1]} ${match[2]}${match[1] === "1" ? "" : "s"}`;
   }
   return null;
 }
 
-function extractRole(content: string): string | null {
+function _extractRole(content: string): string | null {
   const roleKeywords = [
     "full-stack developer",
     "frontend developer",
@@ -82,16 +84,15 @@ function extractRole(content: string): string | null {
 }
 
 function extractGitHubLink(content: string): string | null {
-  const githubRegex = /https:\/\/github\.com\/[^\s]+/;
-  const match = content.match(githubRegex);
+  const match = content.match(GITHUB_REGEX);
   return match ? match[0] : null;
 }
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-  return projects.map((entry) => ({
-    params: { id: entry.id },
-    props: { entry },
+  return projects.map((projectEntry) => ({
+    params: { id: projectEntry.id },
+    props: { entry: projectEntry },
   }));
 }
 
@@ -102,18 +103,21 @@ interface Props {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const project = entry.data;
+
 import siteConfig from "@/config/site.json";
+
 const { company } = siteConfig;
+
 import {
-  X,
-  ExternalLink,
-  Calendar,
-  Target,
   Award,
+  Calendar,
   Code,
-  Globe,
-  Github,
+  ExternalLink,
   ExternalLink as ExternalLinkIcon,
+  Github,
+  Globe,
+  Target,
+  X,
 } from "@lucide/astro";
 import { Button } from "@/components/ui/button";
 
@@ -188,8 +192,7 @@ const githubLink = extractGitHubLink(contentText);
       </div>
 
       <!-- Project Links -->
-      {
-        project.caseStudy.links && (
+      {project.caseStudy.links && (
           <div class="flex flex-row gap-2">
             {project.caseStudy.links.map(
               (link: { url: string; text: string }, index: number) => (
@@ -201,8 +204,7 @@ const githubLink = extractGitHubLink(contentText);
               )
             )}
           </div>
-        )
-      }
+        )}
       <!-- Challenge & Solution -->
       <div class="space-y-4">
         <div class="space-y-2">
@@ -221,8 +223,7 @@ const githubLink = extractGitHubLink(contentText);
       </div>
 
       <!-- GitHub Link (if available) -->
-      {
-        githubLink && (
+      {githubLink && (
           <div class="space-y-3">
             <h3 class="section-title">
               <Github class="w-4 h-4" />
@@ -234,8 +235,7 @@ const githubLink = extractGitHubLink(contentText);
               </Button>
             </a>
           </div>
-        )
-      }
+        )}
     </div>
   </Fragment>
 
@@ -260,8 +260,7 @@ const githubLink = extractGitHubLink(contentText);
       <div class="border-t border-border py-12">
         <h2 class="text-xl font-semibold mb-6">More Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {
-            (await getCollection("projects"))
+          {(await getCollection("projects"))
               .filter((p) => p.id !== entry.id)
               .sort(
                 (a, b) =>
@@ -308,8 +307,7 @@ const githubLink = extractGitHubLink(contentText);
                     </div>
                   </div>
                 </a>
-              ))
-          }
+              ))}
         </div>
       </div>
     </div>

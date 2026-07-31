@@ -12,20 +12,20 @@ export const GET: APIRoute = async ({ site }) => {
   // Create sitemap entries
   const pages = [
     {
-      url: site.toString(),
-      lastmod: new Date(),
       changefreq: "weekly",
+      lastmod: new Date(),
       priority: 1.0,
+      url: site.toString(),
     },
     // Add project pages - extract slug from the file path
     ...projects.map((project) => {
       // Extract slug from the file path (e.g., "adventjs.md" -> "adventjs")
       const slug = project.id.replace(".md", "");
       return {
-        url: `${site}projects/${slug}/`,
-        lastmod: project.data.date || new Date(),
         changefreq: "monthly",
+        lastmod: project.data.date || new Date(),
         priority: 0.8,
+        url: `${site}projects/${slug}/`,
       };
     }),
   ];
@@ -40,15 +40,15 @@ ${pages
     <lastmod>${page.lastmod.toISOString()}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-  </url>`,
+  </url>`
   )
   .join("\n")}
 </urlset>`;
 
   return new Response(sitemap, {
-    status: 200,
     headers: {
       "Content-Type": "application/xml",
     },
+    status: 200,
   });
 };

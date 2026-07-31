@@ -1,5 +1,10 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.6/schema.json",
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/astro"
+  ],
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -11,7 +16,8 @@
       "*.{js,mjs,ts,json}",
       "!!**/dist",
       "!!**/node_modules",
-      "!!**/.astro"
+      "!!**/.astro",
+      "!!public"
     ]
   },
   "formatter": {
@@ -21,10 +27,7 @@
     "lineWidth": 80
   },
   "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true
-    }
+    "enabled": true
   },
   "javascript": {
     "formatter": {
@@ -35,8 +38,35 @@
   "assist": {
     "actions": {
       "source": {
+        "useSortedAttributes": "off",
         "organizeImports": "on"
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "assist": {
+        "actions": {
+          "source": {
+            "useSortedKeys": "off"
+          }
+        }
+      },
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useJsxKeyInIterable": "off"
+          },
+          "nursery": {
+            "useSortedClasses": "off"
+          },
+          "suspicious": {
+            "noUnknownAttribute": "off",
+            "noReactSpecificProps": "off"
+          }
+        }
+      }
+    }
+  ]
 }

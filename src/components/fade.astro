@@ -1,13 +1,13 @@
 ---
 interface Props {
-  stop?: string;
+  background: string;
   blur?: string;
+  className?: string;
+  debug?: boolean;
   height?: string;
   side?: "top" | "bottom" | "left" | "right";
-  className?: string;
-  background: string;
-  debug?: boolean;
-  style?: Record<string, any>;
+  stop?: string;
+  style?: Record<string, string | number>;
 }
 
 const {
@@ -24,10 +24,10 @@ const {
 
 // CSS styles for the fade effect
 const fadeStyles = {
-  "--stop": stop,
+  "--background": background,
   "--blur": blur,
   "--height": height,
-  "--background": background,
+  "--stop": stop,
   ...(debug && {
     outline: "2px solid var(--color-amber-500)",
   }),
@@ -41,8 +41,7 @@ const fadeStyles = {
   data-side={side}
   style={fadeStyles}
   {...rest}
->
-</div>
+></div>
 
 <style>
   .fade-root {
@@ -50,12 +49,12 @@ const fadeStyles = {
     --stop: 25%;
     --height: 48px;
     position: fixed;
-    pointer-events: none;
+    left: 0;
     width: 100%;
     height: var(--height);
-    user-select: none;
+    pointer-events: none;
     -webkit-user-select: none;
-    left: 0;
+    user-select: none;
     backdrop-filter: blur(var(--blur));
 
     &[data-side="top"] {
@@ -69,9 +68,9 @@ const fadeStyles = {
     }
 
     &[data-side="left"] {
-      height: 100%;
-      width: var(--height);
       left: 0;
+      width: var(--height);
+      height: 100%;
       background: linear-gradient(to left, transparent, var(--background));
       mask-image: linear-gradient(
         to right,
@@ -81,10 +80,10 @@ const fadeStyles = {
     }
 
     &[data-side="right"] {
-      height: 100%;
-      width: var(--height);
       right: 0;
       left: unset;
+      width: var(--height);
+      height: 100%;
       background: linear-gradient(to right, transparent, var(--background));
       mask-image: linear-gradient(
         to left,

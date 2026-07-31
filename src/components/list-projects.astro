@@ -1,16 +1,16 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import siteConfig from "@/config/site.json";
 
 const projects = await getCollection("projects");
 type Project = CollectionEntry<"projects">;
 
 // Sort projects by date in descending order (newest first)
-const sortedProjects = projects.sort((a, b) => {
-  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
-});
+const sortedProjects = projects.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 
 const { projects: projectsConfig } = siteConfig;
 const gridCols = projectsConfig.gridColumns || 1;
@@ -33,22 +33,54 @@ const generateGridClass = (columns: number) => {
   let gridClass = "grid gap-2";
 
   // Add responsive column classes
-  if (baseCols === 1) gridClass += " grid-cols-1";
-  if (mdCols === 1) gridClass += " md:grid-cols-1";
-  if (mdCols === 2) gridClass += " md:grid-cols-2";
-  if (lgCols === 1) gridClass += " lg:grid-cols-1";
-  if (lgCols === 2) gridClass += " lg:grid-cols-2";
-  if (lgCols === 3) gridClass += " lg:grid-cols-3";
-  if (xlCols === 1) gridClass += " xl:grid-cols-1";
-  if (xlCols === 2) gridClass += " xl:grid-cols-2";
-  if (xlCols === 3) gridClass += " xl:grid-cols-3";
-  if (xlCols === 4) gridClass += " xl:grid-cols-4";
-  if (twoXlCols === 1) gridClass += " 2xl:grid-cols-1";
-  if (twoXlCols === 2) gridClass += " 2xl:grid-cols-2";
-  if (twoXlCols === 3) gridClass += " 2xl:grid-cols-3";
-  if (twoXlCols === 4) gridClass += " 2xl:grid-cols-4";
-  if (twoXlCols === 5) gridClass += " 2xl:grid-cols-5";
-  if (twoXlCols === 6) gridClass += " 2xl:grid-cols-6";
+  if (baseCols === 1) {
+    gridClass += " grid-cols-1";
+  }
+  if (mdCols === 1) {
+    gridClass += " md:grid-cols-1";
+  }
+  if (mdCols === 2) {
+    gridClass += " md:grid-cols-2";
+  }
+  if (lgCols === 1) {
+    gridClass += " lg:grid-cols-1";
+  }
+  if (lgCols === 2) {
+    gridClass += " lg:grid-cols-2";
+  }
+  if (lgCols === 3) {
+    gridClass += " lg:grid-cols-3";
+  }
+  if (xlCols === 1) {
+    gridClass += " xl:grid-cols-1";
+  }
+  if (xlCols === 2) {
+    gridClass += " xl:grid-cols-2";
+  }
+  if (xlCols === 3) {
+    gridClass += " xl:grid-cols-3";
+  }
+  if (xlCols === 4) {
+    gridClass += " xl:grid-cols-4";
+  }
+  if (twoXlCols === 1) {
+    gridClass += " 2xl:grid-cols-1";
+  }
+  if (twoXlCols === 2) {
+    gridClass += " 2xl:grid-cols-2";
+  }
+  if (twoXlCols === 3) {
+    gridClass += " 2xl:grid-cols-3";
+  }
+  if (twoXlCols === 4) {
+    gridClass += " 2xl:grid-cols-4";
+  }
+  if (twoXlCols === 5) {
+    gridClass += " 2xl:grid-cols-5";
+  }
+  if (twoXlCols === 6) {
+    gridClass += " 2xl:grid-cols-6";
+  }
 
   return gridClass;
 };
@@ -70,8 +102,7 @@ const eagerLoadCount = getEagerLoadCount(gridCols);
 ---
 
 <div class={gridClass}>
-  {
-    sortedProjects.map((project: Project, index: number) => (
+  {sortedProjects.map((project: Project, index: number) => (
       <a
         href={`/projects/${project.id}`}
         class="relative rounded-lg lg:rounded-2xl overflow-hidden hover:opacity-95 transition-opacity aspect-[16/10]"
@@ -110,6 +141,5 @@ const eagerLoadCount = getEagerLoadCount(gridCols);
           </div>
         </div>
       </a>
-    ))
-  }
+    ))}
 </div>

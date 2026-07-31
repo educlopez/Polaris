@@ -9,9 +9,11 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "format": "biome format --write ."
+    "typecheck": "astro check",
+    "lint": "ultracite check",
+    "lint:fix": "ultracite fix",
+    "fix": "ultracite fix",
+    "format": "ultracite fix"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -35,7 +37,8 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.1",
+    "@biomejs/biome": "2.5.6",
+    "ultracite": "7.9.4",
     "@tailwindcss/typography": "^0.5.19",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.10",

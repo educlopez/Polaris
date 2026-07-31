@@ -4,22 +4,22 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://polaris-six-rust.vercel.app",
-  integrations: [mdx(), react()],
-  vite: {
-    plugins: [tailwindcss()],
-  },
   image: {
     service: {
       entrypoint: "astro/assets/services/sharp",
     },
   },
+  integrations: [mdx(), react()],
   markdown: {
     shikiConfig: {
       themes: {
-        light: "github-light",
         dark: "github-dark",
+        light: "github-light",
       },
     },
+  },
+  site: "https://polaris-six-rust.vercel.app",
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

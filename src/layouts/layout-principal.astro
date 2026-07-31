@@ -2,64 +2,63 @@
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import {
-  Linkedin,
-  Github,
-  Dribbble,
-  Twitter,
-  Mail,
-  Instagram,
-  Youtube,
-  Palette,
-  Figma,
   BookOpen,
+  Dribbble,
+  Figma,
+  Github,
+  Instagram,
+  Linkedin,
+  Mail,
+  Palette,
+  Twitter,
+  Youtube,
 } from "@lucide/astro";
-
+import Fade from "@/components/fade.astro";
 import Head from "@/components/head.astro";
 import siteConfig from "@/config/site.json";
-import Fade from "@/components/fade.astro";
 
 // Extend the Props interface to include all head options
 interface Props {
-  title?: string;
-  description?: string;
-  keywords?: string;
   author?: string;
+  canonical?: string;
+  colorScheme?: "light" | "dark" | "light dark";
+  description?: string;
   image?: string;
-  url?: string;
-  type?: "website" | "article" | "profile";
-  publishedTime?: string;
+  keywords?: string;
   modifiedTime?: string;
+  nofollow?: boolean;
+  noindex?: boolean;
+  ogLocale?: string;
+  ogSiteName?: string;
+  publishedTime?: string;
+  robots?: string;
   section?: string;
   tags?: string[];
+  themeColor?: string;
+  title?: string;
   twitterCard?: "summary" | "summary_large_image" | "app" | "player";
   twitterCreator?: string;
   twitterSite?: string;
-  noindex?: boolean;
-  nofollow?: boolean;
-  canonical?: string;
-  ogLocale?: string;
-  ogSiteName?: string;
-  themeColor?: string;
-  colorScheme?: "light" | "dark" | "light dark";
+  type?: "website" | "article" | "profile";
+  url?: string;
   viewport?: string;
-  robots?: string;
 }
 
-const props = Astro.props;
+const { ...props } = Astro.props;
 
 const { company, contact } = siteConfig;
 
 // Define which social networks to show in footer (showing only those with actual URLs)
 const footerSocials = [
-  { name: "LinkedIn", url: contact.linkedin, icon: Linkedin },
-  { name: "GitHub", url: contact.github, icon: Github },
-  { name: "Dribbble", url: contact.dribbble, icon: Dribbble },
-  { name: "Twitter", url: contact.twitter, icon: Twitter },
-  { name: "Instagram", url: contact.instagram, icon: Instagram },
-  { name: "YouTube", url: contact.youtube, icon: Youtube },
-  { name: "Behance", url: contact.behance, icon: Palette },
-  { name: "Figma", url: contact.figma, icon: Figma },
-  { name: "Medium", url: contact.medium, icon: BookOpen },
+  { icon: Linkedin, name: "LinkedIn", url: contact.linkedin },
+  { icon: Github, name: "GitHub", url: contact.github },
+  { icon: Dribbble, name: "Dribbble", url: contact.dribbble },
+  { icon: Twitter, name: "Twitter", url: contact.twitter },
+  { icon: Instagram, name: "Instagram", url: contact.instagram },
+  { icon: Youtube, name: "YouTube", url: contact.youtube },
+  { icon: Palette, name: "Behance", url: contact.behance },
+  { icon: Figma, name: "Figma", url: contact.figma },
+  { icon: BookOpen, name: "Medium", url: contact.medium },
 ].filter(
   (social) =>
     social.url &&
@@ -99,8 +98,7 @@ const footerSocials = [
         <div class="hidden lg:block w-full flex-col gap-4">
           <!-- Social Links -->
           <div class="flex items-center gap-3 mb-4">
-            {
-              footerSocials.map((social) => {
+            {footerSocials.map((social) => {
                 const IconComponent = social.icon;
                 return (
                   <a
@@ -113,8 +111,7 @@ const footerSocials = [
                     <IconComponent class="w-4 h-4" />
                   </a>
                 );
-              })
-            }
+              })}
           </div>
           <p class="text-xs text-foreground/70">{company.footerText}</p>
           <p class="text-xs text-foreground/70">{company.copyright}</p>
@@ -131,8 +128,7 @@ const footerSocials = [
       <div class="w-full flex flex-col gap-4">
         <!-- Social Links -->
         <div class="flex items-center gap-4 mb-4">
-          {
-            footerSocials.map((social) => {
+          {footerSocials.map((social) => {
               const IconComponent = social.icon;
               return (
                 <a
@@ -145,8 +141,7 @@ const footerSocials = [
                   <IconComponent class="w-5 h-5" />
                 </a>
               );
-            })
-          }
+            })}
         </div>
         <p class="text-xs text-foreground/70">{company.footerText}</p>
         <p class="text-xs text-foreground/70">{company.copyright}</p>

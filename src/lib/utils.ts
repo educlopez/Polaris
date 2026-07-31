@@ -24,8 +24,10 @@ export function generateSlug(text: string): string {
  * Truncate text to a specified length
  */
 export function truncateText(text: string, maxLength: number): string {
-  if (text.length <= maxLength) return text;
-  return text.substring(0, maxLength).trim() + "...";
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return `${text.slice(0, maxLength).trim()}...`;
 }
 
 /**
@@ -33,7 +35,7 @@ export function truncateText(text: string, maxLength: number): string {
  */
 export function generateMetaDescription(
   content: string,
-  maxLength: number = 160,
+  maxLength = 160
 ): string {
   // Remove HTML tags and extra whitespace
   const cleanContent = content
@@ -47,10 +49,7 @@ export function generateMetaDescription(
 /**
  * Extract keywords from content
  */
-export function extractKeywords(
-  content: string,
-  maxKeywords: number = 10,
-): string[] {
+export function extractKeywords(content: string, maxKeywords = 10): string[] {
   // Remove HTML tags
   const cleanContent = content.replace(/<[^>]*>/g, "");
 
@@ -101,11 +100,11 @@ export function extractKeywords(
   const words = cleanContent.toLowerCase().match(/\b\w+\b/g) || [];
   const wordCount: Record<string, number> = {};
 
-  words.forEach((word) => {
+  for (const word of words) {
     if (word.length > 2 && !stopWords.has(word)) {
       wordCount[word] = (wordCount[word] || 0) + 1;
     }
-  });
+  }
 
   // Sort by frequency and return top keywords
   return Object.entries(wordCount)
