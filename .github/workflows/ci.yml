@@ -1,43 +1,30 @@
+# Calls the shared gates in educlopez/github-actions-workflows.
+# Update the workflow there and every repo picks it up on the next run.
+
 name: CI
 
 on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
-permissions:
-  contents: read
-
-concurrency:
-  group: ci-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
-  verify:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  lint:
+    uses: educlopez/github-actions-workflows/.github/workflows/lint.yaml@v1
+    with:
+      package-manager: pnpm
+      node-version: '22'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+  typecheck:
+    uses: educlopez/github-actions-workflows/.github/workflows/typecheck.yaml@v1
+    with:
+      package-manager: pnpm
+      node-version: '22'
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Lint & format (Biome)
-        run: pnpm biome ci
-
-      - name: Type check
-        run: pnpm check
-
-      - name: Build
-        run: pnpm build
+  build:
+    uses: educlopez/github-actions-workflows/.github/workflows/build.yaml@v1
+    with:
+      package-manager: pnpm
+      node-version: '22'
