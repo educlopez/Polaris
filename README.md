@@ -66,7 +66,7 @@ Everything you need to build a stunning personal portfolio website. Polaris is a
 
 ## Prerequisites
 
-Node.js (version 22.12 or higher — required by Astro 7)<br>
+Node.js (version 22.23.4 or higher — required by Astro 7.4)<br>
 pnpm (recommended)<br>
 Git<br>
 

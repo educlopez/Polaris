@@ -1,8 +1,13 @@
 allowBuilds:
   esbuild: true
   sharp: true
-# Security overrides — patched versions only, ranges stay inside the
-# current major (no 0.x-minor jumps, no global 6→7 / 7→8 pins).
+minimumReleaseAgeExclude:
+  - astro@7.4.2
+  - "@astrojs/mdx@8.1.1"
+  - '@astrojs/markdown-satteri@0.4.5'
+  - '@astrojs/prism@4.1.1'
+  - '@astrojs/telemetry@3.4.1'
+# Security overrides — patched versions only, ranges stay inside the current major.
 overrides:
   "picomatch@<2.3.2": ">=2.3.2 <3"
   "picomatch@>=4.0.0 <4.0.4": ">=4.0.4 <5"
@@ -12,7 +17,7 @@ overrides:
   "yaml@>=2.0.0 <2.8.3": ">=2.8.3 <3"
   "@babel/core@<7.29.1": ">=7.29.1 <8"
   "devalue@>=5.0.0 <5.9.3": ">=5.9.3 <6"
-  "vite@>=8.0.0 <=8.1.5": ">=8.1.6 <8.2.0"
+  "vite@>=8.0.0 <8.3.4": ">=8.3.4 <9"
   "postcss@<=8.5.22": ">=8.5.23 <9"
   "svgo@>=4.0.0 <4.1.0": ">=4.1.0 <5"
   "http-cache-semantics@<=4.2.0": ">=4.3.0 <5"
