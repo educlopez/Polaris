@@ -2,14 +2,30 @@ allowBuilds:
   esbuild: true
   sharp: true
 minimumReleaseAgeExclude:
-  - astro@7.0.3
-# Security overrides — force patched versions of vulnerable transitive deps
-# (GitHub/Dependabot + pnpm audit advisories). All same-major, safe bumps.
+  - astro@7.4.2
+  - "@astrojs/mdx@8.1.1"
+  - '@astrojs/markdown-satteri@0.4.5'
+  - '@astrojs/prism@4.1.1'
+  - '@astrojs/telemetry@3.4.1'
+# Security overrides. Ranges stay inside the current major except the one
+# scoped parent>dep jump (typography still depends on parser 6; the advisory
+# is only patched in 7.1.6+).
 overrides:
   "picomatch@<2.3.2": ">=2.3.2 <3"
   "picomatch@>=4.0.0 <4.0.4": ">=4.0.4 <5"
-  "js-yaml@>=4.0.0 <4.2.0": "4.2.0"
-  "fast-uri@<3.1.2": ">=3.1.2 <4"
-  "smol-toml@<1.6.1": ">=1.6.1 <2"
+  "js-yaml@>=4.0.0 <4.3.2": "4.3.2"
+  "fast-uri@<3.1.8": ">=3.1.8 <4"
+  "smol-toml@<1.9.0": ">=1.9.0 <2"
   "yaml@>=2.0.0 <2.8.3": ">=2.8.3 <3"
   "@babel/core@<7.29.1": ">=7.29.1 <8"
+  "devalue@>=5.0.0 <5.9.3": ">=5.9.3 <6"
+  "vite@>=8.0.0": ">=8.3.4 <9"
+  "postcss@<=8.5.22": ">=8.5.23 <9"
+  "svgo@>=4.0.0 <4.1.0": ">=4.1.0 <5"
+  "http-cache-semantics@<=4.2.0": ">=4.3.0 <5"
+  "brace-expansion@>=5.0.0 <5.0.12": ">=5.0.12 <6"
+  "nanoid@>=3.0.0 <3.3.18": ">=3.3.18 <4"
+  "browserslist@<=4.28.6": ">=4.28.7 <5"
+  "source-map-js@>=1.0.0 <1.2.2": ">=1.2.2 <2"
+  "baseline-browser-mapping@>=2.0.0 <2.11.0": ">=2.11.0 <3"
+  "@tailwindcss/typography>postcss-selector-parser": ">=7.1.6 <8"
