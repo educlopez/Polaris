@@ -1,16 +1,16 @@
 {
   "site": {
-    "url": "https://polaris-six-rust.vercel.app",
+    "url": "https://polaris.educalvolopez.com",
     "name": "Polaris Portfolio"
   },
   "company": {
-    "name": "Eduardo Calvo",
-    "logo": "https://github.com/educlopez.png",
+    "name": "John Doe",
+    "logo": "https://avatar.vercel.sh/johndoe",
     "description": "UI Designer & Frontend Developer",
     "longDescription": "Passionate UI designer and frontend developer with 8+ years of experience crafting digital experiences that blend aesthetics with functionality.",
     "detailedDescription": "I transform complex ideas into elegant, user-centered digital solutions. My approach combines strategic design thinking with technical expertise, ensuring every project delivers both visual impact and seamless functionality. From concept to deployment, I work closely with clients to understand their goals and create solutions that exceed expectations.",
-    "footerText": "Based in Madrid, Spain. Collaborating with innovative companies worldwide to build exceptional digital experiences.",
-    "copyright": "© 2025 Eduardo Calvo. All rights reserved.",
+    "footerText": "Based in San Francisco, California. Collaborating with innovative companies worldwide to build exceptional digital experiences.",
+    "copyright": "© 2025 John Doe. All rights reserved.",
     "status": {
       "available": true,
       "text": "Available for new projects"
@@ -41,15 +41,15 @@
       "text": "Chat",
       "url": "/"
     },
-    "email": "hello@eduardocalvolopez.com",
-    "linkedin": "https://linkedin.com/in/educlopez",
-    "github": "https://github.com/educlopez",
-    "dribbble": "https://dribbble.com/educlopez",
-    "twitter": "https://twitter.com/educlopez",
-    "instagram": "https://instagram.com/educlopez",
+    "email": "hello@example.com",
+    "linkedin": "https://linkedin.com/in/johndoe",
+    "github": "https://github.com/johndoe",
+    "dribbble": "https://dribbble.com/johndoe",
+    "twitter": "https://twitter.com/johndoe",
+    "instagram": "https://instagram.com/johndoe",
     "youtube": "",
     "behance": "",
-    "figma": "https://figma.com/@educlopez",
+    "figma": "https://figma.com/@johndoe",
     "medium": ""
   },
   "experience": [
@@ -87,7 +87,7 @@
   },
   "testimonials": [
     {
-      "text": "Edu's attention to detail and technical expertise transformed our vision into a stunning, functional reality.",
+      "text": "John's attention to detail and technical expertise transformed our vision into a stunning, functional reality.",
       "author": "Client Name",
       "company": "Company Name"
     }
