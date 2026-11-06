@@ -1,11 +1,11 @@
 # Robots.txt for Polaris Portfolio
-# https://polaris-six-rust.vercel.app
+# https://polaris.educalvolopez.com
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://polaris-six-rust.vercel.app/sitemap.xml
+Sitemap: https://polaris.educalvolopez.com/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

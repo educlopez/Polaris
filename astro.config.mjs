@@ -18,7 +18,7 @@ export default defineConfig({
       },
     },
   },
-  site: "https://polaris-six-rust.vercel.app",
+  site: "https://polaris.educalvolopez.com",
   vite: {
     plugins: [tailwindcss()],
   },

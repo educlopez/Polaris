@@ -20,9 +20,9 @@ caseStudy:
     - "Free trial available"
   links:
     - text: "Try Airlume"
-      url: "https://airlume.vercel.app/"
+      url: "https://airlume.educalvolopez.com/"
     - text: "Sign Up Free"
-      url: "https://airlume.vercel.app/sign-up"
+      url: "https://airlume.educalvolopez.com/sign-up"
 ---
 
 ## Project Overview

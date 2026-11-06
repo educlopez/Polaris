@@ -22,14 +22,14 @@ caseStudy:
     - "SEO optimized and accessible"
   links:
     - text: "View Template"
-      url: "https://polaris-six-rust.vercel.app"
+      url: "https://polaris.educalvolopez.com"
     - text: "GitHub Repository"
       url: "https://github.com/educlopez/polaris"
 ---
 
 ## Project Overview
 
-[Polaris](https://polaris-six-rust.vercel.app) is a modern, minimalist portfolio template designed for developers and designers who want to showcase their projects with elegance and simplicity. Built with Astro for optimal performance, it features a clean design that puts your work front and center while maintaining excellent developer experience.
+[Polaris](https://polaris.educalvolopez.com) is a modern, minimalist portfolio template designed for developers and designers who want to showcase their projects with elegance and simplicity. Built with Astro for optimal performance, it features a clean design that puts your work front and center while maintaining excellent developer experience.
 
 ## The Challenge
 
